@@ -18,6 +18,20 @@ module.exports = {
       {
         test: /\.(s*)css$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|ico)$/i,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 5000,
+            output: {
+              publicPath: 'public/assets/',
+              filename: '[name].[ext]',
+              path: path.resolve(__dirname, 'public/assets/'),
+            }
+          }
+        }
       }
     ]
   },
